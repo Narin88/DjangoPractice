@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'localhost:1521/orclpdb',
         # 'HOST': '127.0.0.1',
         # 'PORT': '1521',
-        'USER': 'python',
+        'USER': 'django',
         'PASSWORD': '1234',
     }
 }
