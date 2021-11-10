@@ -5,8 +5,8 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-
 from accountapp.models import HelloWorld
+from .forms import AccountUpdateForm
 
 # Create your views here.
 def index(request):
@@ -34,3 +34,9 @@ class AccountDetailView(DetailView):
   model = User
   context_object_name = 'target_user'
   template_name = 'accountapp/detail.html'
+
+class AccountUpdateView(UpdateView):
+  model = User
+  form_class = AccountUpdateForm
+  success_url = reverse_lazy("accountapp:index")
+  template_name = 'accountapp/update.html'
