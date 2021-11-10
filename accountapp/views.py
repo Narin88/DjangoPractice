@@ -40,3 +40,8 @@ class AccountUpdateView(UpdateView):
   form_class = AccountUpdateForm
   success_url = reverse_lazy("accountapp:index")
   template_name = 'accountapp/update.html'
+
+class AccountDeleteView(DeleteView):
+  model = User
+  success_url = reverse_lazy('accountapp:login')
+  template_name = 'accountapp/delete.html'
