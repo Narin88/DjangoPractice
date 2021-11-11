@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
 environ.Env.read_env(
-    env_file = os.path.join(BASE_DIR, '.env')
+    env_file=os.path.join(BASE_DIR, '.env')
 )
 
 # Quick-start development settings - unsuitable for production
@@ -69,7 +69,7 @@ ROOT_URLCONF = 'pinterest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,13 +154,6 @@ MEDIA_URL = '/media/'
 # 미디어 파일을 서버에 올렸을때 어느경로에 지정이 될것인지, 그 경로의 ROOT를 지정해준다.
 # 파일을 올리게되면 startproject에서 media라는 폴더가 생기며 그 폴더안에 올린파일이 저장된다.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:index') 
-LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
