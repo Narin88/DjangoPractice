@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'accountapp',
+    'profileapp',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +159,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:index')
+LOGIN_REDIRECT_URL = reverse_lazy('accountapp:index') 
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 # Default primary key field type
