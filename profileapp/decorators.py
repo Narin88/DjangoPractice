@@ -1,6 +1,6 @@
 from django.http import HttpResponseForbidden
 
-from profileapp.views import Profile
+from profileapp.models import Profile
 
 def profile_ownership_required(func):
     def decorated(request, *args, **kwargs):
