@@ -52,8 +52,6 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 # 일반 def에서 사용하는 데코레이터를 메소드에서 사용 할 수 있도록 변환해주는 데코레이터
-
-
 @method_decorator(has_ownership, 'get')  # 사용할 메소드, 적용할 method이름
 @method_decorator(has_ownership, 'post')  # 사용할 메소드, 적용할 method이름
 class AccountUpdateView(UpdateView):
@@ -64,8 +62,6 @@ class AccountUpdateView(UpdateView):
     template_name = 'accountapp/update.html'
 
 # 배열로 넣을시 배열에 있는 메소드들을 모두 확인한다
-
-
 @method_decorator(has_ownership, 'get')  # 사용할 메소드, 적용할 method이름
 @method_decorator(has_ownership, 'post')  # 사용할 메소드, 적용할 method이름
 class AccountDeleteView(DeleteView):
