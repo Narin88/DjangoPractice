@@ -13,3 +13,10 @@
 .pinterest_header {
     text-align: center; margin: 2rem 0;
 }
+
+/* 스크린의 사이즈가 500이하로 떨어지면 css태그 적용 */
+@media screen and (max-width: 500px) { 
+    html {
+        font-size: 13px;
+    }
+}
