@@ -7,9 +7,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.generic.list import MultipleObjectMixin
 from accountapp.decorators import account_ownership_required
 
 from accountapp.models import HelloWorld
+from articleapp.models import Article
 from .forms import AccountUpdateForm
 
 has_ownership = [account_ownership_required, login_required]
@@ -46,10 +48,16 @@ class AcouuntCreateView(CreateView):
     template_name = 'accountapp/create.html'
 
 
-class AccountDetailView(DetailView):
+class AccountDetailView(DetailView, MultipleObjectMixin):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
+
+    paginate_by = 25
+
+    def get_context_data(self, **kwargs):
+        object_list = Article.objects.filter(writer=self.get_object())
+        return super(AccountDetailView, self).get_context_data(object_list=object_list, **kwargs)
 
 # 일반 def에서 사용하는 데코레이터를 메소드에서 사용 할 수 있도록 변환해주는 데코레이터
 @method_decorator(has_ownership, 'get')  # 사용할 메소드, 적용할 method이름
