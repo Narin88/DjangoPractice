@@ -9,3 +9,6 @@ class Project(models.Model):
 
   # 만들어진 날짜
   created_at = models.DateField(auto_now_add=True)
+  
+  def __str__(self) -> str:
+      return f'{self.pk} : {self.title}'

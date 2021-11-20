@@ -14,7 +14,7 @@ class ProfileCreateView(CreateView):
     model = Profile
     context_object_name = 'target_profile'
     form_class = ProfileCreationForm
-    success_url = reverse_lazy('accountapp:index')
+    success_url = reverse_lazy('home')
     template_name = 'profileapp/create.html'
 
     # 템플릿에서 날린 form의 내용이 매개변수 form에 들어가있다.
