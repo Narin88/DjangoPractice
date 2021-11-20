@@ -9,9 +9,10 @@
 
     <img src="{{ target_article.image.url }}" alt="" style="width: 100%; border-radius: 1rem; margin: 2rem 0;">
 
-    <p>
-      {{ target_article.content }}
-    </p>
+    <div class="text-left">
+      <!-- safe: 태그들을 그대로표시하는게 아니라 html로 사용되도록 바꿔준다 -->
+      {{ target_article.content | safe }} 
+    </div>
 
     {% if target_article.writer == user %}
       <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-primary rounded-pill col-3">
