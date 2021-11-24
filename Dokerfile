@@ -4,14 +4,18 @@ WORKDIR /home/
 
 RUN git clone https://github.com/Narin88/DjangoPractice.git
 
-RUN apt-get update && apt-get install -y libaio1 wget unzip
+WORKDIR /opt/oracle/
 
-WORKDIR /opt/oracle
+ENV ORACLE_HOME=/opt/oracle
 
-RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basiclite-linuxx64.zip && \
-    unzip instantclient-basiclite-linuxx64.zip && rm -f instantclient-basiclite-linuxx64.zip && \
-    cd /opt/oracle/instantclient* && rm -f *jdbc* *occi* *mysql* *README *jar uidrvci genezi adrci && \
-    echo /opt/oracle/instantclient* > /etc/ld.so.conf.d/oracle-instantclient.conf && ldconfig
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib
+
+RUN apt-get update && apt-get install -y libaio1 && rm -rf /var/lib/apt/lists/* \
+    && wget -q https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip \
+    && unzip instantclient-*.zip \
+    && mkdir -p $ORACLE_HOME \
+    && mv instantclient_19_6 $ORACLE_HOME/lib \
+    && rm -f instantclient-*.zip
 
 WORKDIR /home/DjangoPractice/
 

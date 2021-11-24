@@ -14,7 +14,6 @@ from pathlib import Path
 from django.urls.base import reverse_lazy
 import environ
 import os
-import cx_Oracle
 
 env = environ.Env(
     # set casting, default value
@@ -104,7 +103,6 @@ DATABASES = {
     }
 }
 
-connection = cx_Oracle.connect("django", "1234", "192.168.222.213/orclpdb")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
