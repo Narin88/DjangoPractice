@@ -95,8 +95,8 @@ WSGI_APPLICATION = 'pinterest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'orclcdb',
-        'HOST': 'localhost',
+        'NAME': 'ORCLCDB',
+        'HOST': '158.247.214.110',
         'PORT': '1521',
         'USER': 'django',
         'PASSWORD': '1234',
