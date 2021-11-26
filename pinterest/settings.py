@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 from django.urls.base import reverse_lazy
 import environ
 import os
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'commentapp',
     'projectapp',
     'subscribeapp',
+    'likeapp',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 ROOT_URLCONF = 'pinterest.urls'
 
@@ -95,7 +101,7 @@ WSGI_APPLICATION = 'pinterest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '158.247.214.110:1521/ORCLCDB',
+        'NAME': 'localhost:1521/ORCLPDB',
         'USER': 'django',
         'PASSWORD': '1234',
     }
